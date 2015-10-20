@@ -1,0 +1,7 @@
+{% spaceless %}<div >
+	{% for i in data.files %}
+		<div class="x-portal-widget-file-list-item">
+			<a href="/uploads/get/{{i.fileId|safe}}" target="_blank" download="{{i.fileName}}">{{i.fileName}}</a>
+		</div>
+	{% endfor %}
+</div>{% endspaceless %}

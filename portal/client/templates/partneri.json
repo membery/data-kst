@@ -1,0 +1,18 @@
+{
+	"templateName": "partneri",
+	"name": "Partneri",
+	"desc": "Nadpis článku, každý článok by mal mať aspoň jeden nadpis. Nadpis článku sa používa aj ako link v zozname článkov",
+	"icon": "img/block-headline.svg",
+	"meta": {
+		"template": "partneri",
+		"isIndex": false,
+		"isMenu": false,
+		"parentMenu": null,
+		"enabled": true,
+		"publishFrom": null,
+		"tags": []
+	},
+	"data": [
+		
+	]
+}

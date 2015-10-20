@@ -1,0 +1,101 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"id": "uri://registries/userSecurity#",
+	"new": {
+		"extends":"uri://registries/people#models/fullperson",
+		"title": "Nový člen",
+		"transCode": "schema.member.new",
+		"security": {
+			"create": {
+				"static": [
+					"Security - write"
+				]
+			},
+			"read": {
+				"static": [
+					"Security - read"
+				]
+			},
+			"modify": {
+				"static": [
+					"Security - write"
+				]
+			}
+		}
+	},
+	"view": {
+		"extends": "uri://registries/people#models/person",
+		"title": "Člen",
+		"transCode": "schema.member.view",
+
+		"security": {
+			"create": {
+				"static": [
+					"Security - write"
+				]
+			},
+			"read": {
+				"static": [
+					"Security - read"
+				]
+			},
+			"modify": {
+				"static": [
+					"Security - write"
+				]
+			}
+		}
+	},
+	"search": {
+		"extends":"uri://registries/people#views/fullperson/search",
+		"security": {
+			"create": {
+				"static": [
+					"Security - write"
+				]
+			},
+			"read": {
+				"static": [
+					"Security - read"
+				]
+			},
+			"modify": {
+				"static": [
+					"Security - write"
+				]
+			}
+		},
+		"transCode": "schema.member.view",
+		"forcedCriteria": [
+			{
+				"f": "baseData.name",
+				"op": "ex",
+				"v": ""
+			}
+		],
+		"properties": {
+			"systemCredentials": {
+				"type": "object",
+				"properties": {
+					"profiles": {
+						"type": "array",
+						"items": {
+							"id": "string"
+						}
+					},
+					"login": {
+						"type": "object",
+						"properties": {
+							"loginName": {
+								"type": "string"
+							},
+							"email": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

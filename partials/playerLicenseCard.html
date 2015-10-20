@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="ie ie6 ie-lt10 ie-lt9 ie-lt8 ie-lt7 no-js" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7 ie-lt10 ie-lt9 ie-lt8 no-js" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8 ie-lt10 ie-lt9 no-js" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9 ie-lt10 no-js" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<div>
+
+
+		<style type="text/css">
+
+
+		.page div,
+		.page span{
+			font: 13px Arial, Helvetica, sans-serif;
+			line-height: 24px;
+			font-weight: bold;
+		}
+
+
+		.page div{
+			margin: 0px;
+			padding: 0px;
+		}
+
+		.page {
+			/*padding-top: 61px;*/
+			width: 93mm;
+			height: 75mm;
+			margin:0px auto;
+			position: relative;
+		}
+
+/*		.page .surname, .page .name, .page .date, .page .ident-num{
+			margin-left: 162px;
+		}*/
+
+		.page .section, .page .dates{
+			margin-left: 20px;
+		}
+
+		.page .registrationId{
+			position: absolute;
+			font-size: 20px;
+			top: 11mm;
+			right: 6mm;
+			width: 108px;
+			text-align: right;
+		}
+		.page .surname{
+			position: absolute;
+			top: 17mm;
+			left: 56mm;
+		}
+		.page .name{
+			position: absolute;
+			top: 24mm;
+			left: 49mm;
+		}
+		.page .date{
+			position: absolute;
+			top: 31mm;
+			left: 61mm;
+		}
+
+		.page .ident-num {
+			position: absolute;
+			top: 39mm;
+			left: 59mm;
+		}
+
+		.page .section{
+			position: absolute;
+			top: 48mm;
+			left: 10mm;
+		}
+
+		.page .date-from{
+			display: block;
+			position: absolute;
+			top: 54mm;
+			left: 21mm;
+
+		}
+		.page .date-to{
+			display: block;
+			position: absolute;
+			top: 54mm;
+			left: 54mm;
+		}
+
+		.page {
+			background-image: url("/dataset/get/img/card02.jpg");
+			background-repeat: no-repeat;
+			background-position:  0px 0px;
+			background-size: contain;
+		}
+
+		.page .content-actions{
+			position: absolute;
+			top: 80mm;
+			right: 0px;
+			font-weight: normal;
+		}
+
+		@media print {
+			@page {
+				size: auto;
+				margin: 0cm;
+			}
+
+			.page {
+				background-image: none;
+				margin-top: -1mm;
+			}
+
+			.page div {
+				margin-left: 8mm;
+			}
+
+			.page .section {
+				margin-left: 13mm;
+			}
+
+			.page .ident-num {
+				left:55mm;
+			}
+
+			.page .date-from {
+				margin-left: 8mm;
+			}
+
+			.page .date-to {
+				margin-left: 8mm;
+			}
+
+			.no-print{
+				display: none !important;
+			}
+			#main-wrapper > header{
+				display: none !important;
+			}
+			.number{
+				color: #0000ff !important;
+			}
+		}
+
+	</style>
+
+	<div class="page">
+		<div class="registrationId">{{model.baseData.registrationID}}</div>
+		<div class="surname">{{model.baseData.surName}}</div>
+		<div class="name">{{model.baseData.name}}</div>
+		<div class="date">{{model.baseData.birthDate|dateToString}}</div>
+		<div class="ident-num">{{model.baseData.id}}</div>
+		<div class="section">{{model.player.clubOfFirstRegistration.refData.name}}</div>
+		<span class="date-from">{{model.player.validFrom|dateToString}}</span>
+		<span class="date-to">{{model.player.validTo|dateToString}}</span>
+
+		<div class="no-print content-actions"><a href="#" class='print' onClick="window.print();return false;"><span>Tlač</span></a></div>
+	</div>
+
+</div>

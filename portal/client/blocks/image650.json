@@ -1,0 +1,17 @@
+{
+	"meta": {
+		"name": "image650",
+		"element": "<div></div>",
+		"type": "image",
+		"title": "Obrázok do článku",
+		"desc": "Obrázok rozlíšenie 650px x 460px",
+		"icon": "img/block-image.svg"
+	},
+	"data": {
+		"img": ""
+	},
+	"config": {
+		"width": 650,
+		"height": 460
+	}
+}

@@ -1,0 +1,31 @@
+@media print {
+	
+	#main-wrapper{
+		
+		> header{
+			margin: 0px 15px;
+			position: relative;
+			display: table !important;
+			height: 90px;
+
+			font-size: 20px !important;
+			font-weight: bold;
+
+			&:before{
+				content: url("/dataset/get/img/logo.png");
+				display: table-cell;
+			}
+			&:after{
+				content:"SLOVENSKÝ ZVÄZ HÁDZANEJ";
+				white-space: pre;
+				display: table-cell;
+				text-align: left;
+				vertical-align: middle;
+
+			}
+			> *{
+				display: none !important;
+			}
+		}
+	}
+}

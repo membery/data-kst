@@ -1,0 +1,129 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"id": "uri://registries/ageCategory#",
+	"blocks": {
+		"baseData": {
+			"title": "Základné údaje",
+			"transCode": "schema.ageCategory.baseData",
+			"type": "object",
+			"properties": {
+				"name": {
+					"title": "Názov kategórie",
+					"transCode": "schema.ageCategory.name",
+					"type": "string",
+					"required": true
+				},
+				"description": {
+					"title": "Popis",
+					"transCode": "schema.ageCategory.description",
+					"type": "string",
+					"required": true
+				}
+			}
+		},
+		"computation": {
+			"title": "Údaje pre výpočet",
+			"transCode": "schema.ageCategory.computation",
+			"type": "object",
+			"properties": {
+				"day": {
+					"title": "Deň",
+					"transCode": "schema.ageCategory.day",
+					"type": "string",
+					"required": true
+				},
+				"month": {
+					"title": "Mesiac",
+					"transCode": "schema.ageCategory.month",
+					"type": "string",
+					"required": true
+				},
+				"age": {
+					"title": "Počet rokov",
+					"transCode": "schema.ageCategory.year",
+					"type": "string",
+					"required": true
+				},
+				"operation": {
+					"title": "Operácia",
+					"transCode": "schema.ageCategory.operation",
+					"type": "string",
+					"enum": [
+						"PO",
+						"PRED"
+					],
+					"required": true,
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				}
+			}
+		}
+	},
+	"models": {
+		"ageCategory": {
+			"table": "ageCategories",
+			"title": "Veková kategória",
+			"transCode": "schema.ageCategory.title",
+			"security": {
+				"create": {
+					"static": [
+						"AgeCategory - write"
+					]
+				},
+				"read": {
+					"static": [
+						"AgeCategory - read"
+					]
+				},
+				"modify": {
+					"static": [
+						"AgeCategory - write"
+					]
+				}
+			},
+			"fireEvents": {
+				"create": "event-agecategory-created",
+				"update": "event-agecategory-updated"
+			},
+			"properties": {
+				"baseData": {
+					"extends": "uri://registries/ageCategory#blocks/baseData"
+				},
+				"computation": {
+					"$ref": "uri://registries/ageCategory#blocks/computation"
+				}
+			}
+		}
+	},
+	"views": {
+		"ageCategory": {
+			"new": {
+				"extends": "uri://registries/ageCategory#models/ageCategory"
+			},
+			"view": {
+				"extends": "uri://registries/ageCategory#models/ageCategory"
+			},
+			"search": {
+				"extends": "uri://registries/ageCategory#models/ageCategory",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2FageCategory~23views~2FageCategory/{{model.id}}"
+						}
+					}
+				],
+				"listFields": [
+					{
+						"field": "baseData.name",
+						"title": "Názov kategórie",
+						"transCode": "schema.ageCategory.name"
+					}
+				]
+			}
+		}
+	}
+}

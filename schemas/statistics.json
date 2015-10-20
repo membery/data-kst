@@ -1,0 +1,36 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"id": "uri://registries/statistics",
+	"view": {
+		"title": "statistics",
+		"transCode": "schema.statistics.view",
+		"security": {
+			"read": {
+				"static": [
+					"Registry - read"
+				]
+			}
+		},
+		"properties": {
+			"baseData": {
+				"title": "Základné štatistiky",
+				"transCode": "schema.statistics.baseData",
+				"type": "object",
+				"properties": {
+					"numberOfMembers": {
+						"title": "Počet členov",
+						"transCode": "schema.statistics.member.count",
+						"type": "number",
+						"readOnly": true
+					},
+					"numberOfWomen": {
+						"title": "Počet žien",
+						"transCode": "schema.statistics.women.count",
+						"type": "number",
+						"readOnly": true
+					}
+				}
+			}
+		}
+	}
+}

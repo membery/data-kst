@@ -1,0 +1,282 @@
+<!-- With sidebar -->
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Česká asociace hokejistů</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="copyright" content="Unionsoft" />
+	<meta name="author" content="" />
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link rel="stylesheet" type="text/css" href="/portal/css/standalone.css">
+	<link rel="stylesheet" type="text/css" href="/portal/css/portal.css">
+	<link rel="stylesheet" type="text/css" href="/portal/css/font-awesome.min.css">
+	<link rel="icon" href="/portal/img/favicon.png" type="image/x-icon">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<div id="portal-main-container">
+		<div id="portal-header-container">
+			<div class="black-bckg"></div>
+			<header id="portal-main-header">
+				<a href="/">
+					<img class="portal-logo" src="/portal/img/portal-logo.png" alt="logo" title="caihp" />
+				</a>
+				<div class="social-icons">
+					<ul>
+						<li><a href="https://caihp.membery.io"><span>Přihlásit</span></a></li>
+						<li><a href="mailto:info@caihp.cz"><i class="fa fa-envelope fa-2x"></i></a></li>
+						<li><a href="https://www.facebook.com/caihp.cz" target="_new"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+						<li><a href="https://twitter.com/caihpcz" target="_new"><i class="fa fa-twitter-square fa-2x"></i></a></li>
+					</ul>
+				</div>
+				<div id="portal-menu-panel-container">
+					{% block menu %}
+						<ul id="portal-menu-panel">
+							{%for k in menu %}
+								<li class="portal-menu-entry">
+									<a href="/article/{{k.aid}}">{{k.name}}</a>
+								</li>
+							{% endfor %}
+						</ul>
+					{% endblock menu %}
+				</div>
+			</header>
+		</div>
+		<div id="mobile-menu-toggler">
+			<a href="" class="toogle-menu" >
+				<i class="fa fa-align-justify"></i>
+			</a>
+		</div>
+		<div id="portal-content-container">
+			<div id="portal-main-content">
+				{% for widget in article.data %}
+					<article class="portal-article {{ widget.meta.type }} portal-article-{{ widget.meta.name }}">
+						{% set templatePath = "widgets/" + widget.meta.type + ".widget" %}
+						{% include templatePath with widget only %}
+					</article>
+				{% endfor %}
+			</div>
+			<div id="portal-side-content">
+				<section class="portal-side-panel">
+					<h1>Sociální média</h1>
+					<iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fcaihp.cz&amp;width=275&amp;height=590&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=true&amp;show_border=true&amp;appId=1439958052895846" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:275px; height:300px;" allowtransparency="true"></iframe>
+					<br>
+					<br>
+					<a class="twitter-timeline" href="https://twitter.com/CAIHPcz" data-widget-id="656449452023128065">Tweets by @CAIHPcz</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div id="footer-container">
+			<article class="patatext">
+				<h1>ASOCIACE</h1>
+				<ul>
+					<li><a href="http://www.nhlpa.com" target="_blank">NHLPA</a></li>
+					<li><a href="http://www.saip.ch/" target="_blank">SAIP</a></li>
+					<li><a href="http://www.sico.nu/" target="_blank">SICO</a></li>
+					<li><a href="http://www.sjry.fi/" target="_blank">FHPA</a></li>
+					<li><a href="http://www.niso.no/" target="_blank">NISO</a></li>
+					<li><a href="http://www.khlptu.ru/" target="_blank">KHLPTU</a></li>
+					<li><a href="http://www.waipu.org/" target="_blank">WAIPU</a></li>
+				</ul>
+			</article>
+
+			<article class="patatext">
+				<h1>ORGANIZACE</h1>
+				<ul>
+					<li><a href="http://www.cslh.cz/" target="_new">ČSLH</a></li>
+					<li><a href="http://www.apklh.cz/" target="_blank">APK LH</a></li>
+					<li><a href="http://www.iihf.com/" target="_blank">IIHF</a></li>
+					<li><a href="http://www.nhl.cz/" target="_blank">NHL</a></li>
+					<li><a href="http://en.khl.ru/" target="_blank">KHL</a></li>
+					<li><a href="http://theahl.com/" target="_blank">AHL</a></li>
+				</ul>
+			</article>
+
+			<article class="patatext">
+				<h1>ZPRAVODAJSTVÍ</h1>
+				<ul>
+					<li><a href="http://www.hokej.cz/" target="_new">Hokej.cz</a></li>
+					<li><a href="http://isport.blesk.cz/hokej" target="_blank">iSport.cz</a></li>
+					<li><a href="http://hokej.idnes.cz/" target="_blank">iDnes.cz</a></li>
+					<li><a href="http://www.sport.cz/hokej/#hp-list-top" target="_blank">Sport.cz</a></li>
+					<li><a href="http://sport.lidovky.cz/hokej.aspx" target="_blank">Lidovky.cz</a></li>
+					<li><a href="http://sport.aktualne.cz/hokej/" target="_blank">Aktualne.cz</a></li>
+					<li><a href="http://www.tyden.cz/rubriky/sport/hokej/" target="_blank">Tyden.cz</a></li>
+				</ul>
+			</article>
+
+			<article class="patatext">
+				<h1>SOUTĚŽE</h1>
+				<ul>
+					<li><a href="http://www.hokej.cz/cz/reprezentace/" target="_new"> Reprezentace</a></li>
+					<li><a href="http://www.hokej.cz/cz/tipsport-extraliga/" target="_new">Tipsport extraliga</a></li>
+					<li><a href="http://www.hokej.cz/cz/1-liga/" target="_blank">1.liga</a></li>
+					<li><a href="http://www.hokej.cz/cz/2-liga/" target="_blank">2.liga</a></li>
+					<li><a href="http://www.hokej.cz/cz/mladez/" target="_blank">Mládež</a></li>
+					<li><a href="http://www.hokej.cz/cz/euro-hockey-tour/" target="_blank">Euro Hockey Tour</a></li>
+					<li><a href="http://www.hokej.cz/cz/european-trophy/" target="_blank">European Trophy</a></li>
+				</ul>
+			</article>
+		</div>
+		<div class="copyright">
+			<span style="font-family:  'Open Sans', sans-serif;color:black;font-size:10px;">
+		<br>
+		<strong>© Copyright:</strong> CAIHP o.s., Všechna práva vyhrazena.
+		<br><strong>Webmaster:</strong> <a href="http://www.legal-soft.cz" target="_blank">Legalsoft s.r.o.</a>
+
+		</span>
+		</div>
+	<footer>
+</body>
+<script>
+	//dynamic resize showcase height
+	function changeHeight() {
+		if($(window).width() < 1100 && $(window).width() > 640) {
+			$('.x-portal-widget-showcase-view').height( $(window).width() / 2.1267);
+			$('.x-portal-widget-showcase-view-image').height( $(window).width() / 2.1267);
+			$('[class*="showcase-item"]').height( $(window).width() / 2.1267);
+		}else if($(window).width() < 641) {
+			$('.x-portal-widget-showcase-view').height(300);
+			$('.x-portal-widget-showcase-view-image').height(300);
+		}else {
+			$('.x-portal-widget-showcase-view').height(470);
+			$('.x-portal-widget-showcase-view-image').height(470);
+		}
+	}
+	$(document).ready(changeHeight);
+	$(window).resize(changeHeight);
+
+	$(function() {
+		$('#portal-menu-panel-container').addClass('mobile-hidden');
+		var mainMenuHidden = true;
+		$('.toogle-menu').click(function (e) {
+			if (mainMenuHidden) {
+				$('#portal-menu-panel-container').removeClass('mobile-hidden');
+				$('header h1').css('visibility', 'hidden');
+				$('header h2').css('visibility', 'hidden');
+				mainMenuHidden = false;
+			} else {
+				$('#portal-menu-panel-container').addClass('mobile-hidden');
+				$('header h1').css('visibility', 'visible');
+				$('header h2').css('visibility', 'visible');
+				mainMenuHidden = true;
+			}
+			e.stopPropagation();
+			return false;
+		});
+		$('body').click(function () {
+			$('#portal-menu-panel-container').addClass('mobile-hidden');
+			$('header h1').css('visibility', 'visible');
+			$('header h2').css('visibility', 'visible');
+			mainMenuHidden = true;
+		});
+		$('.x-portal-widget-showcase-view').each(function() {
+			$(this).bind('showcase-next', function() {
+				var idx = $(this).data('showcase-current') || 0;
+
+				$(this).find('article').eq(idx).fadeOut();
+
+				if (idx == $(this).find('article').length - 1) {
+					idx = 0;
+				} else {
+					++idx;
+				}
+
+				$(this).find('article').eq(idx).fadeIn();
+
+				$(this).data('showcase-current', idx);
+
+				setTimeout(function() {
+					$('.x-portal-widget-showcase-view').triggerHandler('showcase-next');
+				}, 3000);
+			});
+
+		}).triggerHandler('showcase-next');
+
+		$('.x-portal-widget-gallery').each(function(index) {
+
+			$(this).find('.x-portal-widget-gallery-viewer-window-images').append(
+				$(this).find('.x-portal-widget-gallery-thm > img').clone()
+			);
+
+			$(this).bind('gallery-next', function(e, idx) {
+
+			});
+
+			$(this).bind('gallery-show', function(e, idx) {
+				$(this).find('.x-portal-widget-gallery-viewer').css('display', 'table-cell');
+				$(this).data('gallery-current', idx);
+
+				$(this).find('.x-portal-widget-gallery-viewer-window-images > img').eq(idx).fadeIn();
+			});
+
+			$(this).bind('gallery-next', function(e) {
+				var idx = $(this).data('gallery-current');
+
+				$(this).find('.x-portal-widget-gallery-viewer-window-images > img').eq(idx).fadeOut();
+
+				if (idx == $(this).find('.x-portal-widget-gallery-viewer-window-images > img').length - 1) {
+					idx = 0;
+				} else {
+					++idx;
+				}
+
+				$(this).find('.x-portal-widget-gallery-viewer-window-images > img').eq(idx).fadeIn();
+
+				$(this).data('gallery-current', idx);
+			});
+
+			$(this).bind('gallery-prev', function(e) {
+				var idx = $(this).data('gallery-current');
+
+				$(this).find('.x-portal-widget-gallery-viewer-window-images > img').eq(idx).fadeOut();
+
+				if (idx == 0) {
+					idx = $(this).find('.x-portal-widget-gallery-viewer-window-images > img').length - 1;
+				} else {
+					--idx;
+				}
+
+				$(this).find('.x-portal-widget-gallery-viewer-window-images > img').eq(idx).fadeIn();
+
+				$(this).data('gallery-current', idx);
+			});
+
+			$(this).bind('gallery-close', function(e, idx) {
+				var idx = $(this).data('gallery-current');
+
+				$(this).find('.x-portal-widget-gallery-viewer-window-images > img').eq(idx).hide();
+				$(this).find('.x-portal-widget-gallery-viewer').fadeOut();
+			});
+
+			$(this).find('.x-portal-widget-gallery-close-btn').on('click', function() {
+				$(this).closest('.x-portal-widget-gallery').triggerHandler('gallery-close');
+			});
+
+			$(this).find('.x-portal-widget-gallery-next-btn').on('click', function() {
+				$(this).closest('.x-portal-widget-gallery').triggerHandler('gallery-next');
+			});
+
+			$(this).find('.x-portal-widget-gallery-prev-btn').on('click', function() {
+				$(this).closest('.x-portal-widget-gallery').triggerHandler('gallery-prev');
+			});
+
+			$(this).find('.x-portal-widget-gallery-thm > img').each(function(idx){
+				$(this).on('click', function(evt) {
+					$(this).closest('.x-portal-widget-gallery').triggerHandler('gallery-show', [idx]);
+				});
+			});
+		});
+	});
+</script>
+</html>

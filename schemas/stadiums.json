@@ -1,0 +1,165 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"id": "uri://registries/stadiums#",
+
+	"blocks":{
+		"baseData":{
+			"title": "Základné údaje",
+			"transCode":"schema.stadium.baseData",
+			"type": "object",
+			"properties": {
+				"name": {
+					"title": "Názov športového objektu",
+					"transCode":"schema.stadium.name",
+					"type": "string",
+					"required": true
+				},
+				"street": {
+					"title": "Ulica",
+					"transCode":"schema.stadium.street",
+					"type": "string"
+				},
+				"houseNumber": {
+					"title": "Číslo domu",
+					"transCode":"schema.stadium.houseNumber",
+					"type": "string"
+				},
+				"town": {
+					"$ref":"uri://registries/towns#town"
+				},
+				"postcode": {
+					"title": "PSČ",
+					"transCode":"schema.stadium.postcode",
+					"type": "string"
+				}
+			}
+		},
+		"additionalData":{
+			"title": "Doplňujúce údaje",
+			"transCode":"schema.stadium.additionalData",
+			"type": "object",
+			"properties": {
+				"type": {
+					"title": "Typ športového objektu",
+					"transCode":"schema.stadium.type",
+					"type": "string",
+					"enum":[
+						"hala",
+						"ihrisko",
+						"štadión"
+					],
+					"enumTransCodes":[
+						"schema.stadium.type.hall",
+						"schema.stadium.type.playground",
+						"schema.stadium.type.stadium"
+					],
+					"render":{
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				},
+				"surface": {
+					"title": "Povrch",
+					"transCode":"schema.stadium.surface",
+					"type": "string",
+					"enum":[
+						"prírodný",
+						"umelý"
+					],
+					"enumTransCodes":[
+						"schema.stadium.surface.natural",
+						"schema.stadium.surface.artificial"
+					],
+					"render":{
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				},
+				"overallCapacity": {
+					"title": "Celková kapacita",
+					"transCode":"schema.stadium.overallCapacity",
+					"type": "number"
+				},
+				"manager": {
+					"title": "Manažér",
+					"transCode":"schema.stadium.manager",
+					"type": "string"
+				},
+				"managersContact": {
+					"title": "Kontakt na manažéra",
+					"transCode":"schema.stadium.managersContact",
+					"type": "string"
+				}
+			}
+		}
+	},
+
+	"models":{
+		"stadiums":{
+			"table" : "stadiums",
+			"title" : "Športový objekt",
+			"transCode":"schema.stadium.title",
+			"security": {
+				"create": {
+					"static": [
+						"Stadium - write"
+					]
+				},
+				"read": {
+					"static": [
+						"Stadium - read"
+					]
+				},
+				"modify": {
+					"static": [
+						"Stadium - write"
+					]
+				}
+			},
+			"properties":{
+				"baseData":{
+					"extends":"uri://registries/stadiums#blocks/baseData"
+				},
+				"additionalData":{
+					"extends":"uri://registries/stadiums#blocks/additionalData"
+				}
+			}
+		}
+	},
+
+	"views":{
+		"stadium":{
+			"new":{
+				"extends":"uri://registries/stadiums#models/stadiums"
+			},
+			"view":{
+				"extends":"uri://registries/stadiums#models/stadiums"
+			},
+			"search":{
+				"extends":"uri://registries/stadiums#models/stadiums",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fstadiums~23views~2Fstadium/{{model.id}}"
+						}
+					}
+				],
+				"listFields": [
+					{
+						"field":"baseData.name",
+						"title":"Názov športového objektu",
+						"transCode":"schema.stadium.listFields.name"
+					},
+					{
+						"field":"additionalData.overallCapacity",
+						"title":"Celková kapacita",
+						"transCode":"schema.stadium.listFields.overallCapacity"
+					}
+				]
+			}
+		}
+
+	}
+}

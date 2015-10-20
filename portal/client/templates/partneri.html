@@ -1,0 +1,25 @@
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+	fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+<div id="portal-main-container">
+	<div id="portal-header-container">
+		<header id="portal-main-header">
+			<img class="portal-logo" src="portal/img/portal-logo.png" alt="logo" title="CAIHP" />
+		</header>
+	</div>
+	<div id="portal-menu-panel-container">
+		<div id="portal-menu-panel" xpsui-portal-menu-render></div>
+	</div>
+	<div id="portal-content-container">
+		<div id="portal-main-content">
+			<article id="portal-article" xpsui-portal-article-content-edit ng-model="model.data"></article>
+		</div>
+	</div>
+</div>

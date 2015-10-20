@@ -1,0 +1,71 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"id": "uri://registries/commontypes",
+
+	"blocks":{
+		"datetime":{
+			"type":"string"
+		},
+		"date":{
+			"type":"string",
+			"render": {
+				"component": "psui-datepicker"
+			}
+		},
+		"year":{
+			"type":"string"
+		},
+		"email":{
+			"type":"object",
+			"properties":{
+				"value": {
+					"type":"string",
+					"required":true
+				},
+				"verified": {
+					"type":"boolean",
+					"required":true
+				}
+			}
+		},
+		"phoneNumber":{
+			"type":"object",
+			"properties":{
+				"value": {
+					"type":"string",
+					"required":true
+				},
+				"verified": {
+					"type":"boolean",
+					"required":true
+				}
+			}
+		},
+		"address":{
+			"type":"object",
+			"properties":{
+				"street": {
+					"title": "Ulica",
+					"transCode": "schema.people.street",
+					"type": "string"
+				},
+				"houseNumber": {
+					"title": "Číslo domu",
+					"transCode": "schema.people.houseNumber",
+					"type": "string"
+				},
+				"city": {
+					"$ref": "uri://registries/towns#town"
+				},
+				"zipCode": {
+					"title": "PSČ",
+					"transCode": "schema.people.zipCode",
+					"type": "string"
+				},
+				"country": {
+					"$ref": "uri://registries/countries#country"
+				}
+			}
+		}
+	}
+}

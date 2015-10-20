@@ -1,0 +1,56 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"id": "uri://registries/commonenums#",
+
+	"blocks":{
+		"boolean":{
+			"type":"string",
+			"translationPrefix":"enum.boolean",
+			"enum":[
+				"TRUE",
+				"FALSE"
+			],
+			"enumTransCodes":[
+				"enum.boolean.true",
+				"enum.boolean.false"
+			],
+			"render": {
+				"component": "psui-selectbox",
+				"searchable": false
+			}
+		},
+		"active":{
+			"type":"string",
+			"translationPrefix":"enum.active",
+			"enum":[
+				"active",
+				"inactive"
+			],
+			"enumTransCodes":[
+				"enum.active.A",
+				"enum.active.I"
+			],
+			"render": {
+				"component": "psui-selectbox",
+				"searchable": false
+			}
+		},
+		"gender":{
+			"type":"string",
+			"translationPrefix":"enum.gender",
+			"enum":[
+				"M",
+				"F"
+			],
+			"enumTransCodes":[
+				"enum.gender.M",
+				"enum.gender.F"
+			],
+			"render": {
+				"component": "psui-selectbox",
+				"searchable": false
+			}
+
+		}
+	}
+}

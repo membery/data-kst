@@ -1,0 +1,99 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"id": "uri://registries/seasons#",
+	"blocks":{
+		"baseData": {
+			"title": "Základné údaje",
+			"transCode":"schema.season.baseData",
+			"type": "object",
+			"properties": {
+				"name": {
+					"title": "Názov",
+					"transCode":"schema.season.name",
+					"type": "string",
+					"required": true
+				},
+				"startSeason": {
+					"extends":"uri://registries/commontypes#blocks/date",
+					"title": "Začiatok",
+					"transCode": "schema.season.startSeason",
+					"required": true
+				},
+				"endSeason": {
+					"extends":"uri://registries/commontypes#blocks/date",
+					"title": "Koniec",
+					"transCode": "schema.season.endSeason",
+					"required": true
+				}
+			}
+		}
+	},
+	"models":{
+		"seasons":{
+			"table" : "seasons",
+			"title" : "Súťažný ročník",
+			"transCode":"schema.season.title",
+			"security": {
+				"create": {
+					"static": [
+						"Season - write"
+					]
+				},
+				"read": {
+					"static": [
+						"Season - read"
+					]
+				},
+				"modify": {
+					"static": [
+						"Season - write"
+					]
+				}
+			},
+			"properties":{
+				"baseData":{
+					"extends":"uri://registries/seasons#blocks/baseData"
+				}
+			}
+		}
+	},
+	"views":{
+		"seasons":{
+			"new":{
+				"extends":"uri://registries/seasons#models/seasons"
+			},
+			"view":{
+				"extends":"uri://registries/seasons#models/seasons"
+			},
+			"search":{
+				"extends":"uri://registries/seasons#models/seasons",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fseasons~23views~2Fseasons/{{model.id}}"
+						}
+					}
+				],
+				"listFields": [
+					{
+						"field": "baseData.name",
+						"title": "Súťažný ročník",
+						"transCode": "schema.season.name"
+					},
+					{
+						"field": "baseData.startSeason",
+						"title": "Začiatok",
+						"transCode": "schema.season.startSeason"
+					},
+					{
+						"field": "baseData.endSeason",
+						"title": "Koniec",
+						"transCode": "schema.season.endSeason"
+					}
+				]
+			}
+		}
+	}
+}

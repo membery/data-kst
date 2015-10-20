@@ -1,0 +1,60 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"id": "uri://registries/security#group",
+	"title": "Bezpečnostná skupina",
+	"type": "object",
+	"table": "groups",
+	"title": "Security group",
+	"listFields": [
+		{
+			"field": "id",
+			"title": "ID",
+			"transCode": "schema.group.listFields.id"
+		},
+		{
+			"field": "name",
+			"title": "Nazov skupiny",
+			"transCode": "schema.group.listFields.name"
+		}
+	],
+	"properties": {
+		"baseData": {
+			"title": "Základné údaje",
+			"transCode": "schema.group.baseData",
+			"type": "object",
+			"properties": {
+				"id": {
+					"title": "Identifikátor",
+					"transCode": "schema.group.baseData.id",
+					"type": "string",
+					"required": true
+				},
+				"name": {
+					"title": "Názov skupiny",
+					"transCode": "schema.group.baseData.name",
+					"type": "string",
+					"required": true
+				},
+				"parent": {
+					"title": "Rodič",
+					"transCode": "schema.group.baseData.parent",
+					"objectLink2": {
+						"schema":"uri://registries/security#group",
+						"fields":{
+							"name": "baseData.name"
+						}
+					}
+				}
+			}
+		},
+		"security": {
+			"title": "Security",
+			"type": "object",
+			"properties": {
+				"permissions": {
+					"$ref": "uri://registries/security#permissions"
+				}
+			}
+		}
+	}
+}

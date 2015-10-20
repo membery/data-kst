@@ -1,0 +1,13 @@
+{% spaceless %}<div class="x-portal-widget-gallery">
+<div class="x-portal-widget-gallery-viewer">
+	<div class="x-portal-widget-gallery-viewer-window">
+		<div class="x-portal-widget-gallery-viewer-window-images">
+		</div>
+		<div style="position: absolute; left: 10px; bottom: 7px;"><i class="fa fa-chevron-left x-portal-widget-gallery-prev-btn"></i>&nbsp;&nbsp;<i class="fa fa-chevron-right x-portal-widget-gallery-next-btn"></i></div>
+		<div style="position: absolute; right: 10px; bottom: 7px;"><i class="fa fa-remove x-portal-widget-gallery-close-btn"></i></div>
+	</div>
+</div>
+	{% for i in data.images %}
+		<div class="x-portal-widget-gallery-thm"><img src="{{i.img|safe}}"></div>
+	{% endfor %}
+</div>{% endspaceless %}

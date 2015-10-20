@@ -1,0 +1,122 @@
+<div>
+	<style type="text/css">
+		
+		
+		.page div,
+		.page span{
+			font: 13px Arial, Helvetica, sans-serif;
+			line-height: 24px;
+			font-weight: bold;
+		}
+
+		
+		.page div{
+			margin: 0px;
+			padding: 0px;
+		}
+		
+		.page {
+			/*padding-top: 61px;*/
+			width: 93mm;
+			height: 75mm;
+			margin:0px auto;
+			position: relative;
+		}
+		
+/*		.page .surname, .page .name, .page .date, .page .ident-num{
+			margin-left: 162px;
+		}*/
+		
+		.page .section, .page .dates{
+			margin-left: 20px;
+		}
+	
+		.page .surname{
+			position: absolute;
+			top: 16mm;
+			left: 58mm;
+		}
+		.page .name{
+			position: absolute;
+			top: 22mm;
+			left: 51mm;
+		}
+		.page .date{
+			position: absolute;
+			top: 29mm;
+			left: 63mm;
+		}
+		.page .ident-num {
+			position: absolute;
+			top: 37mm;
+			left: 61mm;
+		}
+		.page .section{
+			position: absolute;
+			top: 46mm;
+			left: 12mm;
+		}
+
+		.page .date-from{
+			display: block;
+			position: absolute;
+			top: 52mm;
+			left: 23mm;
+
+		}
+		.page .date-to{
+			display: block;
+			position: absolute;
+			top: 52mm;
+			left: 56mm;
+		}
+			
+		.page {
+			background-image: url("/dataset/get/img/card01.jpg");
+			background-repeat: no-repeat;
+			background-position:  0px 0px;
+			background-size: contain;
+		}
+		
+		.page .content-actions{
+			position: absolute;
+			top: 80mm;
+			right: 0px;
+			font-weight: normal;
+		}
+		
+		@media print {
+			@page {
+				size: auto; 
+				margin: 0cm;
+			}
+
+			.page {
+				background-image: none;
+			}
+			
+			.no-print{
+				display: none !important;
+			}
+			#main-wrapper > header{
+				display: none !important;
+			}
+			.number{
+				color: #0000ff !important;
+			}
+		}
+		
+	</style>
+
+	<div class="page">
+		<div class="surname">{{model.baseData.surName}}</div>
+		<div class="name">{{model.baseData.name}}</div>
+		<div class="date">{{model.baseData.birthDate}}</div>
+		<div class="ident-num">800504/6789</div>
+		<div class="section">oddiel</div>
+		<span class="date-from">01.05.2014</span>
+		<span class="date-to">01.010.2014</span>
+		
+		<div class="no-print content-actions"><a href="#" class='print' onClick="window.print();return false;"><span>Tlač</span></a></div>
+	</div>
+</div>

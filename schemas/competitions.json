@@ -1,0 +1,134 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"id": "uri://registries/competitions#",
+
+	"blocks":{
+		"baseData": {
+			"title": "Základné údaje",
+			"transCode":"schema.competition.baseData",
+			"type": "object",
+			"properties": {
+				"name": {
+					"title": "Názov súťaže",
+					"transCode":"schema.competition.name",
+					"type": "string",
+					"required": true
+				},
+				"season": {
+					"type":"object",
+					"title": "Súťažný ročnik",
+					"transCode":"schema.competition.season",
+					"required": true,
+					"objectLink2": {
+						"schema":"uri://registries/seasons#views/seasons/view",
+						"fields":{
+							"name": "baseData.name"
+						}
+					}
+				},
+				"ageCategory": {
+					"title": "Veková kategória",
+					"transCode":"schema.competition.ageCategory",
+					"type": "object",
+					"objectLink2": {
+						"schema":"uri://registries/ageCategory#views/ageCategory/view",
+						"fields":{
+							"name": "baseData.name"
+						}
+					},
+					"required": true
+				},
+				"gender": {
+					"extends":"uri://registries/commonenums#blocks/gender",
+					"title": "Pohlavie",
+					"transCode": "schema.people.gender",
+					"required": true
+				},
+				"competitionLevel": {
+					"title": "Úroveň súťaže",
+					"transCode":"schema.competition.competitionLevel",
+					"type": "number"
+				}
+			}
+		}
+	},
+
+	"models":{
+		"competitions":{
+			"table": "competitions",
+			"title": "Súťaž",
+			"transCode":"schema.competition.title",
+			"security": {
+				"create": {
+					"static": [
+						"Competition - write"
+					]
+				},
+				"read": {
+					"static": [
+						"Competition - read"
+					]
+				},
+				"modify": {
+					"static": [
+						"Competition - write"
+					]
+				}
+			},
+			"fireEvents":{
+				"create": "event-transfer-created",
+				"update": "event-transfer-updated"
+			},
+			"properties":{
+				"baseData":{
+					"extends":"uri://registries/competitions#blocks/baseData"
+				}
+			}
+		}
+	},
+
+	"views":{
+		"competitions":{
+			"new":{
+				"extends":"uri://registries/competitions#models/competitions"
+			},
+			"view":{
+				"extends":"uri://registries/competitions#models/competitions"
+			},
+			"search":{
+				"extends":"uri://registries/competitions#models/competitions",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fcompetitions~23views~2Fcompetitions/{{model.id}}"
+						}
+					}
+				],
+				"listFields": [
+					{
+						"field": "baseData.name",
+						"title": "Názov súťaže",
+						"transCode": "schema.competition.name"
+					},
+					{
+						"field": "baseData.season",
+						"title": "Súťažný ročník",
+						"transCode": "schema.competition.season"
+					},
+					{
+						"field": "baseData.ageCategory",
+						"title": "Veková kategória",
+						"transCode": "schema.competition.ageCategory"
+					},
+					{
+						"field": "baseData.gender",
+						"title": "Pohlavie",
+						"transCode": "schema.competition.gender"
+					}
+				]
+			}
+		}
+	}
+}
